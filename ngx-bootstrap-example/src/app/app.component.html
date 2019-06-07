@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-8 offset-2">
+
+      <!-- ---------------------------------------------------------------------- -->
+      <!-- --------------------------------- 1 ---------------------------------- -->
+      <!-- ---------------------------------------------------------------------- -->
+
+      <div class="km-border">
+        <pre class="text-success card card-block card-header mb-3">Model: {{selectedColor | json}}</pre>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input id="color" [(ngModel)]="selectedColor" [typeahead]="colors" class="form-control"/>
+        </div>
+      </div>
+
+
+      <!-- ---------------------------------------------------------------------- -->
+      <!-- --------------------------------- 2 ---------------------------------- -->
+      <!-- ---------------------------------------------------------------------- -->
+
+      <div class="km-border">
+        <pre class="text-primary card card-block card-header mb-3">Model: {{selectedPersonName | json}}</pre>
+        <div class="form-group">
+          <label for="person">Person</label>
+          <input
+            id="person"
+            [(ngModel)]="selectedPersonName"
+            [typeahead]="people"
+            typeaheadOptionField="name"
+            class="form-control"/>
+        </div>
+      </div>
+
+
+      <!-- ---------------------------------------------------------------------- -->
+      <!-- --------------------------------- 3 ---------------------------------- -->
+      <!-- ---------------------------------------------------------------------- -->
+
+      <div class="km-border">
+        <pre class="text-info card card-block card-header mb-3">Model: {{selectedProductId | json}}</pre>
+        <div class="form-group">
+          <label for="product">Product</label>
+          <input
+            id="product"
+            [(ngModel)]="selectedProduct"
+            [typeahead]="products"
+            typeaheadOptionField="name"
+            (typeaheadOnSelect)="onSelect($event)"
+            class="form-control"/>
+        </div>
+      </div>
+
+
+      <!-- ---------------------------------------------------------------------- -->
+      <!-- --------------------------------- 4 ---------------------------------- -->
+      <!-- ---------------------------------------------------------------------- -->
+
+      <div class="km-border">
+        <pre class="text-warning card card-block card-header mb-3">Model: {{asyncSelectedCarModel | json}}</pre>
+        <pre class="text-warning card card-block card-header mb-3">Car: {{asyncSelectedCar | json}}</pre>
+        <div class="form-group mt-5">
+          <label for="car">Car</label>
+          <input
+            id="car"
+            [(ngModel)]="asyncSelectedCarModel"
+            [typeaheadAsync]="true"
+            [typeahead]="asyncCars"
+            (typeaheadLoading)="changeTypeaheadLoading($event)"
+            (typeaheadOnSelect)="typeaheadOnSelect($event)"
+            typeaheadOptionField="model"
+            placeholder="Loading..."
+            class="form-control"/>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
